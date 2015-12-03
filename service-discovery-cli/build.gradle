@@ -1,0 +1,75 @@
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+if (hasProperty("teamcity")) {
+  version = '1.0.' + teamcity["build.number"]
+  jar.baseName = "iot-discovery-jcli"
+} else {
+  version = '1.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    flatDir { dirs "lib" }
+}
+
+
+task jarSource ( type: Jar, dependsOn: jar) {
+    from sourceSets.main.allSource
+    baseName = 'iot-discovery-java-sources'
+}
+
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'IoT Discovery Java',
+                'Implementation-Version': version,
+                'Main-Class': 'org.eclipse.iot.tiaki.cli.Launcher'
+    }
+    baseName = "iot-discovery-jcli"
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+check.dependsOn fatJar
+
+task javaDoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+}
+
+task zipJavaDoc(type: Zip, dependsOn :javaDoc) {
+
+    baseName 'iot-discovery-javadoc'
+    from 'build/docs/javadoc'
+}
+
+
+dependencies {
+    //internal module dependencies
+    compile ':iot-discovery-services-1.0'
+
+    compile ':dnsjava-2.1.7'
+    compile ':dnssecjava-1.0-SNAPSHOT'
+
+    compile 'org.slf4j:slf4j-log4j12:1.7.12'
+    compile 'log4j:log4j:1.2.17'
+
+    compile 'net.sf.jopt-simple:jopt-simple:4.8'
+    testCompile 'junit:junit:4.12'
+}
+
+
+ext {
+    expectedGradleVersion = '2.2.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = expectedGradleVersion
+}

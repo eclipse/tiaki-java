@@ -1,0 +1,3 @@
+This folder aims at providing a bunch of tools to automate the testing of the CLI.
+
+NOTE The test script is supposed to run in the same directory as the script containing the expected Exit Codes (the latter will be a child script).
