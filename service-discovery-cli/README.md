@@ -1,16 +1,7 @@
 # Secure Service Discovery CLI
 
-## Introduction
+Welcome to the service-discovery-cli project. Its purpose is to provide a command-line interface to perform Secure Service Discovery using the Tiaki SDK (see https://github.com/eclipse/tiaki-java/tree/master/service-discovery-lib).
 
-### DNS-based Service Discovery
-DNS-SD is described in the  IETF RFC 6763
-https://tools.ietf.org/html/rfc6763
-
-
-### Purpose
-This project aims at providing a comprehensive command line tool to lookup services provisioned according to DNS-SD. 
-
-The command line tool uses the Secure Service Discovery SDK (https://github.com/eclipse/tiaki-java/tree/master/service-discovery-lib).
 
 ## Build Process
 This is a Gradle project. 
