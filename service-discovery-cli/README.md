@@ -1,4 +1,4 @@
-# IoT Discovery Services CLI Application
+# Secure Service Discovery CLI
 
 ## Introduction
 
@@ -8,16 +8,16 @@ https://tools.ietf.org/html/rfc6763
 
 
 ### Purpose
-This project aims at providing a comprehensive command line tool to lookup services provisioned according to DNS-SD. The community is invited to use and contribute to this tool.
+This project aims at providing a comprehensive command line tool to lookup services provisioned according to DNS-SD. 
 
-The command line tool uses the Discovery Services API (https://github.com/verisign/iot-discovery-services).
+The command line tool uses the Secure Service Discovery SDK (https://github.com/eclipse/service-discovery-lib/).
 
 ## Build Process
-This is a Gradle project. Building the project will pull the required libraries into the workspace.
+This is a Gradle project. 
 
 ```
 $ cd $PROJECT_HOME
-$ gradle clean fatJar
+$ ./gradlew clean fatJar
 ```
 
 ## Usage
