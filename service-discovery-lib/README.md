@@ -1,4 +1,4 @@
-# Secure Discovery Services Java Library
+# Secure Service Discovery for Java
 
 Welcome to the service-discovery-lib project.
 The main purpose of the discovery library is to allow its clients (device, gateway, etc.) to securely discover services (eg. a message broker) and configuration (eg. topic names) for a specific service type (eg. MQTT) in a given domain name.
