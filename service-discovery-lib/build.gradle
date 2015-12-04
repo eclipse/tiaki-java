@@ -6,12 +6,8 @@ apply plugin: 'eclipse'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-if (hasProperty("teamcity")) {
-    version = "1.0." + teamcity["build.number"]
-    jar.baseName = "iot-discovery-services"
-} else {
-    version = "1.0"
-}
+version = "1.0"
+jar.baseName = "tiaki"
 
 repositories {
     mavenLocal()
@@ -22,7 +18,7 @@ repositories {
 
 task jarSource ( type: Jar, dependsOn: jar) {
     from sourceSets.main.allSource
-    baseName = 'iot-discovery-services-sources'
+    baseName = 'tiaki-sources'
 }
 
 
@@ -30,10 +26,10 @@ task jarSource ( type: Jar, dependsOn: jar) {
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'IoT Discovery Java',
+        attributes 'Implementation-Title': 'Tiaki Secure Service Discovery',
         	'Implementation-Version': version
     }
-    baseName = "iot-discovery-java"
+    baseName = "tiaki"
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -44,7 +40,7 @@ task javaDoc(type: Javadoc) {
 
 task zipJavaDoc(type: Zip, dependsOn :javaDoc) {
 
-    baseName 'iot-discovery-javadoc'
+    baseName 'tiaki-javadoc'
     from 'build/docs/javadoc'
 }
 

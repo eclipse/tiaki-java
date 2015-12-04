@@ -6,12 +6,8 @@ apply plugin: 'eclipse'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-if (hasProperty("teamcity")) {
-  version = '1.0.' + teamcity["build.number"]
-  jar.baseName = "iot-discovery-jcli"
-} else {
-  version = '1.0'
-}
+version=1.0
+jar.baseName = "tiaki-cli"
 
 repositories {
     mavenLocal()
@@ -22,18 +18,18 @@ repositories {
 
 task jarSource ( type: Jar, dependsOn: jar) {
     from sourceSets.main.allSource
-    baseName = 'iot-discovery-java-sources'
+    baseName = 'tiaki-cli-java-sources'
 }
 
 
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'IoT Discovery Java',
+        attributes 'Implementation-Title': 'Tiaki Secure Service Discovery',
                 'Implementation-Version': version,
                 'Main-Class': 'org.eclipse.iot.tiaki.cli.Launcher'
     }
-    baseName = "iot-discovery-jcli"
+    baseName = "tiaki-cli"
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -46,14 +42,14 @@ task javaDoc(type: Javadoc) {
 
 task zipJavaDoc(type: Zip, dependsOn :javaDoc) {
 
-    baseName 'iot-discovery-javadoc'
+    baseName 'tiaki-cli-javadoc'
     from 'build/docs/javadoc'
 }
 
 
 dependencies {
     //internal module dependencies
-    compile ':iot-discovery-services-1.0'
+    compile ':tiaki-1.0'
 
     compile ':dnsjava-2.1.7'
     compile ':dnssecjava-1.0-SNAPSHOT'

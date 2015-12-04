@@ -3,10 +3,10 @@
 # check the path to the JAR
 if [ -z $TIAKI_CLI_HOME ];
 then
-    echo "error: TIAKI_CLI_HOME not set up: it is supposed to point to the JAR"
+    echo "error: TIAKI_CLI_HOME not set up: it is supposed to point to the Tiaki-cli lib folder"
     exit 1
 else
-    java -jar $TIAKI_CLI_HOME/iot-discovery-jcli-1.0.jar "$@"
+    java -jar $TIAKI_CLI_HOME/tiaki-cli-1.0.jar "$@"
 fi
 
 

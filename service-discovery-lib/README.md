@@ -1,7 +1,9 @@
 # Secure Service Discovery for Java
 
 Welcome to the service-discovery-lib project.
+
 The main purpose of the discovery library is to allow its clients (device, gateway, etc.) to securely discover services (eg. a message broker) and configuration (eg. topic names) for a specific service type (eg. MQTT) in a given domain name.
+
 It implements the [DNS-SD IETF RFC 7673 ](https://tools.ietf.org/html/rfc6763) which specifies how DNS resource records are named and structured to facilitate service discovery.
 
 ## Build
@@ -20,10 +22,10 @@ After the provisioning is done, you can lookup service instance names by service
 
 On the image below, a user is provisioning a mqtt service with the URL "iot.eclipse.org:1883" under domain name "example.com".
 
-Using the iot-discovery-services library, the device then looks up services of type "mqtt" under domain name "example.com" and finds "iot.eclipse.org:1883".
+Using the Secure Service Discovery library, the device then looks up services of type "mqtt" under domain name "example.com" and finds "iot.eclipse.org:1883".
 
 
-![Provisioning and resolution workflow](https://github.com/rpiccand/iot-discovery-services/blob/master/img/dns-sd%20workflow.png)
+![Provisioning and resolution workflow](https://github.com/eclipse/tiaki-java/blob/master/service-discovery-lib/img/dns-sd%20workflow.png)
 
 ## Using the Library
 Here is a simple example which retrieves the "printer" service instances from "dns-sd.org". In the code below, we use the default DNS Resolver and don't check for DNSSEC (as dns-sd.org is not dnssec-enabled).
@@ -98,10 +100,10 @@ public class Discoverer {
 ```
 
 ## Using DNSSEC to secure the discovery process
-The Domain Name System Security Extensions (DNSSec) is a technology designed to ensure the authenticity of DNS records  by applying PKI principles. The iot-discovery-services library validates the DNSSec records, which ensures that they are trustworthy.
+The Domain Name System Security Extensions (DNSSec) is a technology designed to ensure the authenticity of DNS records  by applying PKI principles. The Secure Service Discovery library validates the DNSSec records, which ensures that they are trustworthy.
 
 ## Going further into DNS-SD DNS Records
-The iot-discovery-services library abstracts the complexity of using raw DNS records. For the sake of completeness, this section describes a concrete example of provisioned DNS Records for service discovery. We use the command line [bind utility dig](https://www.isc.org/downloads/bind/) to retrieve the DNS Records. The domain name used to host this example is dns-sd.org.
+The Secure Service Discovery library abstracts the complexity of using raw DNS records. For the sake of completeness, this section describes a concrete example of provisioned DNS Records for service discovery. We use the command line [bind utility dig](https://www.isc.org/downloads/bind/) to retrieve the DNS Records. The domain name used to host this example is dns-sd.org.
 
 ### Listing service types
 After new service instances have been provisioned, this command lists the DNS labels for which a service type was provisioned. It is a query for PTR records for the "_services._dns-sd._udp" label.

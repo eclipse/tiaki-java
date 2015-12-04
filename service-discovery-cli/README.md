@@ -17,7 +17,7 @@ Using the executable JAR:
 ```
 $ cd $PROJECT_HOME
 $ cd build/libs
-$ java -jar iot-discovery-jcli -h
+$ java -jar tiaki-cli-1.0.jar -h
 
 Usage: sd-lookup [<command>[<arg>]] [options]
 Commands:
@@ -83,7 +83,7 @@ or using the fat Jar:
 
 ```
 $ cd $PROJECT_HOME/build/libs
-$ java -jar iot-discovery-jcli-1.0.jar -d dns-sd.org -l -e
+$ java -jar tiaki-cli-1.0.jar -d dns-sd.org -l -e
 afpovertcp
 ftp
 http
@@ -108,7 +108,7 @@ or using the fat Jar:
 
 ```
 $ cd $PROJECT_HOME/build/libs
-$ java -jar iot-discovery-jcli-1.0.jar -d dns-sd.org -i -s ftp -e
+$ java -jar tiaki-cli-1.0.jar -d dns-sd.org -i -s ftp -e
 60 "apple quicktime files" ftp.apple.com TCP:21 "txtvers=1" "path=/quicktime"
 60 "microsoft developer files" ftp.microsoft.com TCP:21 "txtvers=1" "path=/developer"
 59 "restricted, registered users only" pretend-server.dns-sd.org TCP:21 "txtvers=1" "path=/"
